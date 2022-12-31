@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #26547b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .main {
+            /* border: 2px solid red; */
+            width: 70%;
+            height: 400px;
+        }
+
+        .parent {
+            width: 100%;
+            height: 100%;
+            background-color: #ef4869;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .top {
+            width: 100%;
+            /* border: 2px solid blue; */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .topLeft {
+            /* border: 2px solid green; */
+            padding: .8rem 1.5rem;
+            background-color: #fed268;
+            box-shadow: 0 5px 3px #d68c18;
+            border-radius: 5px;
+        }
+
+        .topRight {
+            /* border: 2px solid green; */
+            padding: .8rem 1.5rem;
+            width: 80%;
+            height: 45px;
+            border-radius: 5px;
+            background-color: #26547b;
+            color: white;
+            font-weight: 900;
+            text-align: end;
+            box-shadow: inset 2px 2px 2px 1px #490311;
+        }
+
+        .bottom{
+            /* border: 2px solid green; */
+            width: 100%;
+            display: flex;
+            height: 83%;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .numbers, .operators, .equal{
+            width: 22%;
+            padding: .8rem 0;
+            /* margin: .8rem; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            color: white;
+            font-weight: 900;
+            font-size: 30px;
+        }
+        
+        .numbers{
+            background-color: #26547b;
+    
+            box-shadow: 0px 3px 2px #112d45;
+        }
+
+        .operators{
+            background-color: #fed268;
+            box-shadow: 0 5px 3px #d68c18;
+            color: rgb(68, 68, 68);
+        }
+
+        .equal{
+            background-color: #06d5a0;
+            box-shadow: 0 2px 2px #008d64;
+        }
+
+        @media only screen and (min-width: 768px) {
+            .main{
+                width: 40%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="parent">
+            <div class="top">
+                <div id="clear" onclick="clearDisp(event)"  class="topLeft">C</div>
+                <div id="topRight" class="topRight"></div>
+            </div>
+            <div class="bottom">
+                <div onclick="getValue(event)" id="seven" class="seven numbers">7</div>
+                <div onclick="getValue(event)" id="eight" class="eight numbers">8</div>
+                <div onclick="getValue(event)" id="nine" class="nine numbers">9</div>
+                <div onclick="getValue(event)" id="divide" class="divide operators">/</div>
+                <div onclick="getValue(event)" id="four" class="four numbers">4</div>
+                <div onclick="getValue(event)" id="five" class="five numbers">5</div>
+                <div onclick="getValue(event)" id="six" class="six numbers">6</div>
+                <div onclick="getValue(event)" id="minus" class="minus operators">-</div>
+                <div onclick="getValue(event)" id="one" class="one numbers">1</div>
+                <div onclick="getValue(event)" id="two" class="two numbers">2</div>
+                <div onclick="getValue(event)" id="three" class="three numbers">3</div>
+                <div onclick="getValue(event)" id="plus" class="plus operators">+</div>
+                <div onclick="getValue(event)" id="dot" class="dot numbers">.</div>
+                <div onclick="getValue(event)" id="zero" class="zero numbers">0</div>
+                <div onclick="value(event)" id="equals" class="equal">=</div>
+                <div onclick="getValue(event)" id="multiply" class="multiply operators">*</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var currentValue
+        function getValue(event) {
+            currentValue = event.target.innerText
+            const display = document.getElementById("topRight")
+            display.innerText += currentValue
+            currentValue = display.innerText
+            console.log(currentValue);
+        }
+        
+        function value() {
+            const display = document.getElementById("topRight")
+            display.innerText =""
+            display.innerText = eval(currentValue)
+        }
+
+        function clearDisp(event) {
+            const display = document.getElementById("topRight")
+            display.innerText =""
+        }
+
+    </script>
+</body>
+
+</html>
